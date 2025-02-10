@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
 export const NotFoundWrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const NotFoundWrapper = styled.div`
 `;
 
 export const NotFoundText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--tomato-9);
 `;
