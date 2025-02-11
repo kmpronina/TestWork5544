@@ -65,7 +65,7 @@ export const weatherStore = create<WeatherStore>((set) => ({
         error: null,
       });
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to fetch weather data. Please try again.';
+      const errorMessage = 'Failed to fetch weather data. Please try again.';
 
       set({
         weatherData: null,
