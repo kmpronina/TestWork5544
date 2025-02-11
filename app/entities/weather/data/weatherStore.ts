@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import axios, { AxiosResponse } from "axios";
-import { WeatherData } from "../types";
-import getUrl from "./utils/getUrl";
+import { create } from 'zustand';
+import axios, { AxiosResponse } from 'axios';
+import { WeatherData } from '../types';
+import getUrl from './utils/getUrl';
 
 export interface WeatherStore {
   city: string;
@@ -13,7 +13,7 @@ export interface WeatherStore {
 }
 
 const initialState: WeatherStore = {
-  city: "",
+  city: '',
   weatherData: null,
   error: null,
   loading: false,
@@ -28,7 +28,7 @@ export const weatherStore = create<WeatherStore>((set) => ({
     if (!city) {
       set({
         loading: false,
-        error: "Please enter a city name",
+        error: 'Please enter a city name',
         weatherData: null,
       });
       return;
@@ -41,13 +41,13 @@ export const weatherStore = create<WeatherStore>((set) => ({
       const response: AxiosResponse = await axios.get(url);
 
       if (!response.data) {
-        throw new Error("No data received from the weather service");
+        throw new Error('No data received from the weather service');
       }
 
       set({
         weatherData: {
           dt: response.data.dt ?? 0,
-          description: response.data.weather?.[0]?.description ?? "",
+          description: response.data.weather?.[0]?.description ?? '',
           temp: response.data.main?.temp ?? 0,
           feelsLike: response.data.main?.feels_like ?? 0,
           city: {
@@ -59,16 +59,13 @@ export const weatherStore = create<WeatherStore>((set) => ({
           wind: response.data.wind?.speed ?? 0,
           clouds: response.data.clouds?.all ?? 0,
           visibility: response.data.visibility ?? 0,
-          icon: response.data.weather?.[0]?.icon ?? "",
+          icon: response.data.weather?.[0]?.icon ?? '',
         },
         loading: false,
         error: null,
       });
     } catch (err) {
-      const errorMessage =
-        err instanceof Error
-          ? err.message
-          : "Failed to fetch weather data. Please try again.";
+      const errorMessage = err instanceof Error ? err.message : 'Failed to fetch weather data. Please try again.';
 
       set({
         weatherData: null,

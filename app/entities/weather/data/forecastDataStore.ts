@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import axios from "axios";
-import { ForecastData } from "../types";
-import getForecastUrl from "./utils/getForecastUrl";
+import { create } from 'zustand';
+import axios from 'axios';
+import { ForecastData } from '../types';
+import getForecastUrl from './utils/getForecastUrl';
 
 export interface ForecastDataStore {
   cityId: number | null;
@@ -49,7 +49,7 @@ const forecastDataStore = create<ForecastDataStore>((set) => ({
         error: null,
       });
     } catch (error) {
-      set({ error: "Failed to fetch weather data", loading: false });
+      set({ error: 'Failed to fetch weather data', loading: false });
     }
   },
 }));

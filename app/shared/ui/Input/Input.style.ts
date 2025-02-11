@@ -1,5 +1,3 @@
-'use client';
-
 import { styled } from 'styled-components';
 import { TextField } from '@radix-ui/themes';
 

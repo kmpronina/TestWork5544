@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export interface FavoriteStore {
   favoriteCitiesIds: number[];
@@ -21,19 +21,17 @@ const favoriteStore = create<FavoriteStore>()(
         })),
       removeFavoriteCityId: (cityId: number) =>
         set((state) => ({
-          favoriteCitiesIds: state.favoriteCitiesIds.filter(
-            (id) => id !== cityId
-          ),
+          favoriteCitiesIds: state.favoriteCitiesIds.filter((id) => id !== cityId),
         })),
     }),
     {
-      name: "favorite-cities-ids",
+      name: 'favorite-cities-ids',
       storage: createJSONStorage(() => localStorage),
       onRehydrateStorage: () => (state) => {
         if (state) state.setHasHydrated(true);
       },
-    }
-  )
+    },
+  ),
 );
 
 export default favoriteStore;

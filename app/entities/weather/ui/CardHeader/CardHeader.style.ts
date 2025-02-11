@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardHeaderStyle = styled.div`
   width: 100%;

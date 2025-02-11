@@ -1,8 +1,6 @@
-import { ForecastData, GroupedForecast } from "../../types";
+import { ForecastData, GroupedForecast } from '@/app/entities/weather/types';
 
-function groupWeatherByDays(
-  weatherArray: ForecastData["list"]
-): GroupedForecast {
+function groupWeatherByDays(weatherArray: ForecastData['list']): GroupedForecast {
   const now = new Date();
   const today = now.getDate();
 
@@ -25,7 +23,7 @@ function groupWeatherByDays(
       today: [],
       tomorrow: [],
       dayAfterTomorrow: [],
-    }
+    },
   );
 }
 

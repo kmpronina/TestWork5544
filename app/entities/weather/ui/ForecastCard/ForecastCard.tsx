@@ -1,15 +1,12 @@
-import React from "react";
-import {
-  ForecastCardWrapper,
-  ForecastCardHeader,
-  ForecastCardContent,
-} from "./ForecastCard.style";
-import { ForecastData } from "@/app/entities/weather/types";
-import getTime from "../utils/getTime";
-import { useWeatherDisplay } from "../utils/useWeatherDisplay";
+'use client';
+
+import { ForecastData } from '@/app/entities/weather/types';
+import getTime from '../utils/getTime';
+import { useWeatherDisplay } from '../utils/useWeatherDisplay';
+import { ForecastCardWrapper, ForecastCardHeader, ForecastCardContent } from './ForecastCard.style';
 
 interface ForecastCardProps {
-  forecastItem: ForecastData["list"][0];
+  forecastItem: ForecastData['list'][0];
 }
 
 const ForecastCard = ({ forecastItem }: ForecastCardProps) => {

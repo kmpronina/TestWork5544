@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
-import getUrl from "./utils/getUrl";
-import { WeatherData } from "../types";
+import { useState, useEffect } from 'react';
+import axios, { AxiosResponse } from 'axios';
+import { WeatherData } from '../types';
+import getUrl from './utils/getUrl';
 
 function useWeather(city: string | number) {
   const [data, setData] = useState<WeatherData | null>(null);
@@ -21,7 +21,7 @@ function useWeather(city: string | number) {
 
         setData({
           dt: response.data.dt ?? 0,
-          description: response.data.weather?.[0]?.description ?? "",
+          description: response.data.weather?.[0]?.description ?? '',
           temp: response.data.main?.temp ?? 0,
           feelsLike: response.data.main?.feels_like ?? 0,
           city: {
@@ -33,11 +33,11 @@ function useWeather(city: string | number) {
           wind: response.data.wind?.speed ?? 0,
           clouds: response.data.clouds?.all ?? 0,
           visibility: response.data.visibility ?? 0,
-          icon: response.data.weather?.[0]?.icon ?? "",
+          icon: response.data.weather?.[0]?.icon ?? '',
         });
         setError(null);
       } catch (error) {
-        setError("Error getting the data");
+        setError('Error getting the data');
         setData(null);
       } finally {
         setLoading(false);

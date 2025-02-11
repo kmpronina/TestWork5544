@@ -1,4 +1,5 @@
 'use client';
+
 import { StyledSkeleton } from './Loading.style';
 
 interface LoadingProps {

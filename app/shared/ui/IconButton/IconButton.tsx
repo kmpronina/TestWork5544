@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import { PlusIcon } from '@radix-ui/react-icons';
 import { Tooltip } from '@radix-ui/themes';
 import { StyledIconButton } from './IconButton.style';

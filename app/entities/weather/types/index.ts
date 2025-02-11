@@ -20,11 +20,11 @@ export type ForecastData = {
     id: number;
     name: string;
   };
-  list: Omit<WeatherData, "city">[];
+  list: Omit<WeatherData, 'city'>[];
 };
 
 export type GroupedForecast = {
-  today: ForecastData["list"];
-  tomorrow: ForecastData["list"];
-  dayAfterTomorrow: ForecastData["list"];
+  today: ForecastData['list'];
+  tomorrow: ForecastData['list'];
+  dayAfterTomorrow: ForecastData['list'];
 };

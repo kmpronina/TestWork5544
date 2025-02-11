@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useParams } from "next/navigation";
-import { Forecast } from "@/app/features";
+import { useParams } from 'next/navigation';
+import { Forecast } from '@/app/features';
 
 const ForecastPage = () => {
   const { cityId } = useParams();

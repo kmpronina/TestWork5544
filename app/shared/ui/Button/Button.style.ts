@@ -1,5 +1,5 @@
-import { Button as RadixButton } from '@radix-ui/themes';
 import { styled } from 'styled-components';
+import { Button as RadixButton } from '@radix-ui/themes';
 
 export const StyledButton = styled(RadixButton)`
   width: fit-content;

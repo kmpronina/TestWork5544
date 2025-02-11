@@ -1,6 +1,4 @@
-"use client";
-
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const NotFoundWrapper = styled.div`
   display: flex;

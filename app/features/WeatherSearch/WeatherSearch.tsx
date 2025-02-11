@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import type React from "react";
-import { useEffect, useState } from "react";
-import { weatherStore } from "@/app/entities/weather/data/weatherStore";
-import { Container } from "./WeatherSearch.style";
-import { useDebounce } from "@/app/shared/lib/useDebounce";
-import { Input } from "@/app/shared/ui";
-import { WeatherCard } from "@/app/entities/weather/ui";
+import type React from 'react';
+import { useEffect, useState } from 'react';
+import { weatherStore } from '@/app/entities/weather/data/weatherStore';
+import { Container } from './WeatherSearch.style';
+import { useDebounce } from '@/app/shared/lib/useDebounce';
+import { Input } from '@/app/shared/ui';
+import { WeatherCard } from '@/app/entities/weather/ui';
 
 export default function WeatherSearch() {
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState('');
   const debouncedValue = useDebounce(city);
   const { weatherData, error, loading, fetchWeather } = weatherStore();
 
@@ -22,8 +22,8 @@ export default function WeatherSearch() {
   return (
     <Container>
       <Input
-        variant="surface"
-        placeholder="Search the city"
+        variant='surface'
+        placeholder='Search the city'
         required
         value={city}
         onChange={(e) => setCity(e.target.value)}

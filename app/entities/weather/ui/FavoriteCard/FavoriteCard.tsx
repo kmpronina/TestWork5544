@@ -1,6 +1,7 @@
-import React from "react";
-import useWeather from "@/app/entities/weather/data/useWeather";
-import { WeatherCard } from "..";
+'use client';
+
+import useWeather from '@/app/entities/weather/data/useWeather';
+import { WeatherCard } from '..';
 
 interface FavoriteCardProps {
   cityId: number;

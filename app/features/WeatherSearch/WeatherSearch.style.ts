@@ -1,9 +1,7 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  padding: 1rem;
-  max-width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

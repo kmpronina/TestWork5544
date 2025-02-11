@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { StyledInput } from './Input.style';
 
 interface InputProps {

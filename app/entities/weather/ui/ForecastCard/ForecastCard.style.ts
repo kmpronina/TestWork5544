@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import { Card } from "@radix-ui/themes";
+import { styled } from 'styled-components';
+import { Card } from '@radix-ui/themes';
 
 export const ForecastCardWrapper = styled(Card)`
   width: 100%;

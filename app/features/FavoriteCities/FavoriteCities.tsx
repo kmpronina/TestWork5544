@@ -1,26 +1,23 @@
-"use client";
+'use client';
 
-import { useMemo } from "react";
-import { FavoriteCitiesContainer } from "./FavoriteCities.style";
-import FavoriteCard from "@/app/entities/weather/ui/FavoriteCard/FavoriteCard";
-import { Loading, NotFound } from "@/app/shared/ui";
+import { useMemo } from 'react';
+import { FavoriteCitiesContainer } from './FavoriteCities.style';
+import FavoriteCard from '@/app/entities/weather/ui/FavoriteCard/FavoriteCard';
+import { Loading, NotFound } from '@/app/shared/ui';
 
 interface FavoriteCitiesProps {
   favoriteCitiesIds: number[];
   _hasHydrated: boolean;
 }
 
-const FavoriteCities = ({
-  favoriteCitiesIds,
-  _hasHydrated,
-}: FavoriteCitiesProps) => {
+const FavoriteCities = ({ favoriteCitiesIds, _hasHydrated }: FavoriteCitiesProps) => {
   const content = useMemo(() => {
     if (!_hasHydrated) {
       return <Loading />;
     }
 
     if (!favoriteCitiesIds.length) {
-      return <NotFound text="Add a city to your favorites" />;
+      return <NotFound text='Add a city to your favorites' />;
     }
 
     return favoriteCitiesIds.map((id) => <FavoriteCard key={id} cityId={id} />);

@@ -1,25 +1,18 @@
-import React, { useMemo } from "react";
-import { CardHeaderStyle, CardHeaderTitle } from "./CardHeader.style";
-import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
-import { ForecastData, WeatherData } from "@/entities/weather/types";
-import { IconButton } from "@/shared/ui";
-import favoriteStore from "@/entities/weather/data/favoriteStore";
+import React, { useMemo } from 'react';
+import { MinusIcon, PlusIcon } from '@radix-ui/react-icons';
+import { ForecastData, WeatherData } from '@/entities/weather/types';
+import favoriteStore from '@/entities/weather/data/favoriteStore';
+import { IconButton } from '@/shared/ui';
+import { CardHeaderStyle, CardHeaderTitle } from './CardHeader.style';
 
 interface CardHeaderProps {
-  city: WeatherData["city"] | ForecastData["city"];
+  city: WeatherData['city'] | ForecastData['city'];
 }
 
 const CardHeader = ({ city }: CardHeaderProps) => {
-  const {
-    favoriteCitiesIds = [],
-    addFavoriteCityId,
-    removeFavoriteCityId,
-  } = favoriteStore();
+  const { favoriteCitiesIds = [], addFavoriteCityId, removeFavoriteCityId } = favoriteStore();
 
-  const isFavorite = useMemo(
-    () => Boolean(favoriteCitiesIds?.includes(city.id)),
-    [favoriteCitiesIds, city.id]
-  );
+  const isFavorite = useMemo(() => Boolean(favoriteCitiesIds?.includes(city.id)), [favoriteCitiesIds, city.id]);
 
   const handleToggleFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -36,7 +29,7 @@ const CardHeader = ({ city }: CardHeaderProps) => {
     <CardHeaderStyle>
       <CardHeaderTitle>{city.name}</CardHeaderTitle>
       <IconButton
-        tooltip={isFavorite ? "Remove from favorite" : "Add to favorite"}
+        tooltip={isFavorite ? 'Remove from favorite' : 'Add to favorite'}
         onClick={handleToggleFavorite}
         icon={isFavorite ? <MinusIcon /> : <PlusIcon />}
       />
