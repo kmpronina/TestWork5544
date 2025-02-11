@@ -17,6 +17,7 @@ export default function WeatherSearch() {
     if (debouncedValue) {
       fetchWeather(debouncedValue);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
 
   return (

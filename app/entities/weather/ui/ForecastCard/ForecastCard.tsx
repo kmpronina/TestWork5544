@@ -11,6 +11,7 @@ interface ForecastCardProps {
 
 const ForecastCard = ({ forecastItem }: ForecastCardProps) => {
   const forecastDisplay = useWeatherDisplay(forecastItem);
+
   return (
     <ForecastCardWrapper>
       <ForecastCardHeader>{getTime(forecastItem.dt)}</ForecastCardHeader>

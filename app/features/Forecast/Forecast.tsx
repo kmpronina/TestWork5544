@@ -25,8 +25,6 @@ const Forecast = ({ cityId }: ForecastProps) => {
     fetchForecast(Number(cityId));
   }, [cityId, fetchForecast]);
 
-  if (!cityId) return <NotFound />;
-
   const groupedForecast = useMemo(() => groupWeatherByDays(forecastData?.list ?? []), [forecastData]);
 
   const renderForecast = useMemo(
@@ -44,6 +42,8 @@ const Forecast = ({ cityId }: ForecastProps) => {
     ),
     [groupedForecast],
   );
+
+  if (!cityId) return <NotFound />;
 
   return (
     <Container>

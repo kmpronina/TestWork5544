@@ -21,6 +21,7 @@ const FavoriteCities = ({ favoriteCitiesIds, _hasHydrated }: FavoriteCitiesProps
     }
 
     return favoriteCitiesIds.map((id) => <FavoriteCard key={id} cityId={id} />);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_hasHydrated, favoriteCitiesIds]);
 
   return <FavoriteCitiesContainer>{content}</FavoriteCitiesContainer>;

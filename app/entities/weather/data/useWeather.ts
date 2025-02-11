@@ -45,6 +45,7 @@ function useWeather(city: string | number) {
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city]);
 
   return { data, loading, error };

@@ -4,8 +4,11 @@ export const HeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 1rem;
   gap: 1rem;
+  margin-bottom: 1rem;
+  @media (min-width: 768px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const HeaderTitle = styled.h1`
