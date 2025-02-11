@@ -2,16 +2,16 @@
 
 import type React from "react";
 import { useEffect, useState } from "react";
-import { useWeatherStore } from "@/app/entities/weather/api/useWeatherData";
+import { weatherStore } from "@/app/entities/weather/data/weatherStore";
 import { Container } from "./WeatherSearch.style";
 import { useDebounce } from "@/app/shared/lib/useDebounce";
-import { Input, Loading, NotFound } from "@/app/shared/ui";
-import { WeatherCard } from "@/app/entities/weather/components";
+import { Input } from "@/app/shared/ui";
+import { WeatherCard } from "@/app/entities/weather/ui";
 
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
   const debouncedValue = useDebounce(city);
-  const { weatherData, error, loading, fetchWeather } = useWeatherStore();
+  const { weatherData, error, loading, fetchWeather } = weatherStore();
 
   useEffect(() => {
     if (debouncedValue) {
@@ -28,14 +28,7 @@ export default function WeatherSearch() {
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          {error && <NotFound text={error} />}
-          {weatherData && <WeatherCard weatherData={weatherData} />}
-        </>
-      )}
+      <WeatherCard weatherData={weatherData} loading={loading} error={error} />
     </Container>
   );
 }

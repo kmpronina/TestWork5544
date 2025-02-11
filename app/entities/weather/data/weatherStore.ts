@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { WeatherData } from "../types";
 import getUrl from "./utils/getUrl";
 
@@ -9,9 +9,6 @@ export interface WeatherStore {
   error: string | null;
   loading: boolean;
   setCity: (city: string) => void;
-  favoriteCities: number[];
-  addFavoriteCity: (city: number) => void;
-  removeFavoriteCity: (city: number) => void;
   fetchWeather: (city: string) => Promise<void>;
 }
 
@@ -20,27 +17,13 @@ const initialState: WeatherStore = {
   weatherData: null,
   error: null,
   loading: false,
-  favoriteCities: [],
   setCity: () => {},
-  addFavoriteCity: () => {},
-  removeFavoriteCity: () => {},
   fetchWeather: async () => {},
 };
 
-export const useWeatherStore = create<WeatherStore>((set) => ({
-  // city: "",
-  // weatherData: null,
-  // error: null,
-  // loading: false,
+export const weatherStore = create<WeatherStore>((set) => ({
   ...initialState,
   setCity: (city) => set({ city }),
-  favoriteCities: [],
-  addFavoriteCity: (city) =>
-    set((state) => ({ favoriteCities: [...state.favoriteCities, city] })),
-  removeFavoriteCity: (city) =>
-    set((state) => ({
-      favoriteCities: state.favoriteCities.filter((c) => c !== city),
-    })),
   fetchWeather: async (city) => {
     if (!city) {
       set({
@@ -55,7 +38,7 @@ export const useWeatherStore = create<WeatherStore>((set) => ({
 
     try {
       const url = getUrl(city);
-      const response = await axios.get(url);
+      const response: AxiosResponse = await axios.get(url);
 
       if (!response.data) {
         throw new Error("No data received from the weather service");
@@ -96,4 +79,4 @@ export const useWeatherStore = create<WeatherStore>((set) => ({
   },
 }));
 
-export default useWeatherStore;
+export default weatherStore;

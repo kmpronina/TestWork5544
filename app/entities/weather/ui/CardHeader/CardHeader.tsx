@@ -1,21 +1,24 @@
 import React, { useMemo } from "react";
 import { CardHeaderStyle, CardHeaderTitle } from "./CardHeader.style";
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
-import useWeatherStore from "@/entities/weather/api/useWeatherData";
 import { ForecastData, WeatherData } from "@/entities/weather/types";
 import { IconButton } from "@/shared/ui";
+import favoriteStore from "@/entities/weather/data/favoriteStore";
 
 interface CardHeaderProps {
   city: WeatherData["city"] | ForecastData["city"];
 }
 
 const CardHeader = ({ city }: CardHeaderProps) => {
-  const { favoriteCities, addFavoriteCity, removeFavoriteCity } =
-    useWeatherStore();
+  const {
+    favoriteCitiesIds = [],
+    addFavoriteCityId,
+    removeFavoriteCityId,
+  } = favoriteStore();
 
   const isFavorite = useMemo(
-    () => favoriteCities.includes(city.id),
-    [favoriteCities, city.id]
+    () => Boolean(favoriteCitiesIds?.includes(city.id)),
+    [favoriteCitiesIds, city.id]
   );
 
   const handleToggleFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,9 +26,9 @@ const CardHeader = ({ city }: CardHeaderProps) => {
     e.stopPropagation();
 
     if (isFavorite) {
-      removeFavoriteCity(city.id);
+      removeFavoriteCityId(city.id);
     } else {
-      addFavoriteCity(city.id);
+      addFavoriteCityId(city.id);
     }
   };
 
@@ -34,7 +37,7 @@ const CardHeader = ({ city }: CardHeaderProps) => {
       <CardHeaderTitle>{city.name}</CardHeaderTitle>
       <IconButton
         tooltip={isFavorite ? "Remove from favorite" : "Add to favorite"}
-        onClick={(e) => handleToggleFavorite(e)}
+        onClick={handleToggleFavorite}
         icon={isFavorite ? <MinusIcon /> : <PlusIcon />}
       />
     </CardHeaderStyle>

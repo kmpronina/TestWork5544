@@ -8,7 +8,7 @@ body {
   background-color: var(--mauve-2);
   color: var(--mauve-11);
   padding: 0 2rem;
-  max-width: 1640px;
+  width: 1640px;
   margin: 0 auto;
 }
 

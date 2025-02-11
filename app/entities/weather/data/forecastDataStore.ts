@@ -21,7 +21,7 @@ const initialState: ForecastDataStore = {
   fetchForecast: async () => {},
 };
 
-export const useForecastDataStore = create<ForecastDataStore>((set) => ({
+const forecastDataStore = create<ForecastDataStore>((set) => ({
   ...initialState,
   setCityId: (cityId) => set({ cityId }),
   fetchForecast: async (cityId) => {
@@ -53,3 +53,5 @@ export const useForecastDataStore = create<ForecastDataStore>((set) => ({
     }
   },
 }));
+
+export default forecastDataStore;

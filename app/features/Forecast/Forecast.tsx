@@ -1,14 +1,14 @@
 "use client";
 import React, { useEffect, useMemo } from "react";
-import { useForecastDataStore } from "@/app/entities/weather/api/useForecastData";
+import forecastDataStore from "@/app/entities/weather/data/forecastDataStore";
 import {
   Container,
   ForecastSection,
   ForecastSectionTitle,
 } from "./Forecast.style";
 import { Loading, NotFound } from "@/app/shared/ui";
-import { CardHeader, ForecastCard } from "@/app/entities/weather/components";
-import groupWeatherByDays from "@/app/entities/weather/components/utils/groupForecastByDays";
+import { CardHeader, ForecastCard } from "@/app/entities/weather/ui";
+import groupWeatherByDays from "@/app/entities/weather/ui/utils/groupForecastByDays";
 import { ForecastData } from "@/app/entities/weather/types";
 
 interface ForecastProps {
@@ -22,8 +22,7 @@ const FORECAST_SECTIONS = [
 ] as const;
 
 const Forecast = ({ cityId }: ForecastProps) => {
-  const { forecastData, loading, error, fetchForecast } =
-    useForecastDataStore();
+  const { forecastData, loading, error, fetchForecast } = forecastDataStore();
 
   useEffect(() => {
     fetchForecast(Number(cityId));
