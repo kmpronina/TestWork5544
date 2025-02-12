@@ -10,10 +10,14 @@ export const Container = styled.div`
   justify-content: start;
 `;
 
-export const FormWrapper = styled.form`
+export const InputWrapper = styled.div`
+  width: 100%;
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;

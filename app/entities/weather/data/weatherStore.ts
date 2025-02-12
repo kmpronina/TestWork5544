@@ -1,15 +1,15 @@
 import { create } from 'zustand';
 import axios, { AxiosResponse } from 'axios';
-import { WeatherData } from '../types';
+import { City, WeatherData } from '../types';
 import getUrl from './utils/getUrl';
 
 export interface WeatherStore {
-  city: string;
+  city: City;
   weatherData: WeatherData | null;
   error: string | null;
   loading: boolean;
-  setCity: (city: string) => void;
-  fetchWeather: (city: string) => Promise<void>;
+  setCity: (city: City) => void;
+  fetchWeather: (city: City) => Promise<void>;
 }
 
 const initialState: WeatherStore = {

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios, { AxiosResponse } from 'axios';
-import { WeatherData } from '../types';
+import { City, WeatherData } from '../types';
 import getUrl from './utils/getUrl';
 
-function useWeather(city: string | number) {
+function useWeather(city: City) {
   const [data, setData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

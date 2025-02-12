@@ -81,3 +81,5 @@ export interface WeatherApiResponse {
     sunset: number;
   };
 }
+
+export type City = string | number | { lat: number; lon: number };
